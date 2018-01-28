@@ -5,13 +5,14 @@ export var BinanceBookTicker = ( function() {
     function createInstance() {
         var o = {};
         
-        o.apiUrl = 'https://www.binance.com/api/v3/ticker/bookTicker';
+        o.apiUrl =  "http://cryptoc.zuro.pl/servicedata/binance.php";//'https://www.binance.com/api/v3/ticker/bookTicker';
         o.interval = 60; //pobieranie danych co 60 sekund
         o.data = [];
         
         o.updateData = function(){
             //console.log('Update data');
             $.getJSON(o.apiUrl, function(data){
+               // console.log(data);
                 o.data = data;
             });
         };

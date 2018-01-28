@@ -15,7 +15,7 @@
                 <th scope="row text-left">{{ item.getSymbol() }}</th>
                 <td scope="col text-right"  v-bind:class="item.bidClass">{{ item.bid }} {{ item.baseCurr }}</td>
                 <td scope="col text-right"  v-bind:class="item.askClass">{{ item.ask }} {{ item.baseCurr }}</td>
-                <td scope="col"></td>
+                <td scope="col">{{ item.changeBid }} </td>
               </tr>
           </tbody>
         </table>
@@ -31,7 +31,15 @@ export default {
   data() {
     return {
       tickUpdateInterval: 30,
-      arrPair: [{c: 'ADA', b: 'ETH'},{c: 'REQ', b: 'ETH'},{c: 'XLM', b: 'ETH'}],
+      arrPair: [
+        {c: 'ADA', b: 'ETH'},
+        {c: 'XLM', b: 'ETH'},
+        {c: 'IOTA', b: 'ETH'},
+        {c: 'VEN', b: 'ETH'},
+        {c: 'REQ', b: 'ETH'},
+        {c: 'VIBE', b: 'ETH'}
+     
+      ],
       currArr: []
     };
   },

@@ -22,4 +22,5 @@ export default {
 </style>
 <style>
 @import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+@import './assets/css/main.css';
 </style>

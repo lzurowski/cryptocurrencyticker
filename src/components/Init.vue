@@ -1,5 +1,5 @@
 <template>
-  <div class="baseApp container">
+  <div class="baseApp">
     <ul class="nav nav-tabs" id="baseAppTab" role="tablist">
       <li class="nav-item">
         <a class="nav-link active" id="bitbay-tab" data-toggle="tab" href="#bitbay" role="tab" aria-controls="bitbay" aria-selected="true">BitBay</a>
@@ -13,26 +13,10 @@
     </ul>
     <div class="tab-content" id="baseAppTabContent">
       <div id="bitbay" class="tab-pane fade show active" role="tabpanel" aria-labelledby="bitbay-tab">
-        <div class="container">
-          <div class="row hide575">
-              <div class="col-sm-2 text-center border">WALUTA</div>
-              <div class="col-sm-3 text-center border">KURS</div>
-              <div class="col-sm-2 text-center border">KUPNO</div>
-              <div class="col-sm-2 text-center border">SPRZEDAŻ</div>    
-              <div class="col-sm-3 text-center border">WOLUMEN</div>  
-          </div>
-          <bit-bay-tick currency="BTC"></bit-bay-tick> 
-          <bit-bay-tick currency="ETH"></bit-bay-tick>
-          <bit-bay-tick currency="BCC"></bit-bay-tick>
-          <bit-bay-tick currency="BTG"></bit-bay-tick>
-          <bit-bay-tick currency="LTC"></bit-bay-tick>
-          <bit-bay-tick currency="LSK"></bit-bay-tick>
-          <bit-bay-tick currency="DASH"></bit-bay-tick>
-          <bit-bay-tick currency="GAME"></bit-bay-tick>
-        </div>
+          <tick-table symbols="BTCPLN,ETHPLN,LTCPLN,LSKPLN,BCCPLN,BTGPLN,DASHPLN,GAMEPLN"></tick-table>
       </div>
       <div id="binance" class="tab-pane fade" role="tabpanel" aria-labelledby="binance-tab">
-          <binance-tick-table></binance-tick-table>
+         <tick-table symbols="ADAETH,XLMETH,IOTAETH,VENETH,REQETH,VIBEETH,XRPETH,NEOETH,BCCETH,LTCETH,EOSETH,DASHETH,XMRETH"></tick-table>
       </div>
       <div id="wallet" class="tab-pane fade" role="tabpanel" aria-labelledby="wallet-tab">
         User wallet settings
@@ -42,20 +26,23 @@
 </template>
 
 <script>
-import {BinanceBookTicker} from "./services/BinanceBookTicker.js";
+//import {BinanceBookTicker} from "./services/BinanceBookTicker.js";
+import {ServerTicker} from "./services/ServerTicker.js";
 
 import BitBayTick from "./com/BitBayTick.vue";
 import BinanceTickTable from "./com/BinanceTickTable.vue";
+import TickTable from "./com/TickTable.vue";
 
 //get ticker data from binance service
 //BinanceBookTicker.getinstance().start();
-BinanceBookTicker.getInstance().start();
-
+//BinanceBookTicker.getInstance().start();
+ServerTicker.getInstance().start();
 
 export default {
   components: {
     BitBayTick: BitBayTick,
-    BinanceTickTable: BinanceTickTable
+    BinanceTickTable: BinanceTickTable,
+    TickTable: TickTable,
   },
   name: "Init",
   data() {
@@ -73,5 +60,8 @@ export default {
     .hide575{
       display: none;
     }
+}
+div.baseApp{
+  margin: 0 5%;
 }
 </style>

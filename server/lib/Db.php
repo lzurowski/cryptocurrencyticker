@@ -44,8 +44,11 @@ class Db {
      */
     public function queryArr($sql){
         $arr = [];
-        foreach ($this->connection->query($sql,\PDO::FETCH_ASSOC) as $row) {
-           $arr[] = $row;
+        $res = $this->connection->query($sql,\PDO::FETCH_ASSOC);
+        if(!empty($res)){
+            foreach ($this->connection->query($sql,\PDO::FETCH_ASSOC) as $row) {
+                $arr[] = $row;
+            }
         }
         return $arr;
     }
